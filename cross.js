@@ -302,9 +302,9 @@ function createNewPuzzle(rows, cols) {
     "acrossWord": '',
     "downWord":   '',
     "acrossStartIndex":0,
-    "acrossEndIndex":  DEFAULT_SIZE,
+    "acrossEndIndex":  cols || DEFAULT_SIZE,
     "downStartIndex":  0,
-    "downEndIndex":    DEFAULT_SIZE,
+    "downEndIndex":    rows || DEFAULT_SIZE,
     "direction":  ACROSS
   };
 
@@ -321,6 +321,12 @@ function createNewPuzzle(rows, cols) {
   }
   grid.addEventListener('keydown', keyboardHandler);
   console.log("New puzzle created.")
+}
+
+function newPuzzleOfSize() {
+  rows = parseInt(document.getElementById('rows-input').value)
+  cols = parseInt(document.getElementById('cols-input').value)
+  createNewPuzzle(rows, cols)
 }
 
 function mouseHandler(e) {
@@ -595,14 +601,15 @@ function getWordAt(row, col, direction, setCurrentWordIndices) {
   }
   text = text.split(BLANK).join(DASH);
   [start, end] = getWordIndices(text, (direction == ACROSS) ? col : row);
-  // Set global word indices if needed
-  if (setCurrentWordIndices) {
-    if (direction == ACROSS) {
-      [current.acrossStartIndex, current.acrossEndIndex] = [start, end];
-    } else {
-      [current.downStartIndex, current.downEndIndex] = [start, end];
-    }
-  }
+  // // COMMENTED OUT LINES BELOW - MAYBE A PROBLEM.
+  // // Set global word indices if needed
+  // if (setCurrentWordIndices) {
+  //   if (direction == ACROSS) {
+  //     [current.acrossStartIndex, current.acrossEndIndex] = [start, end];
+  //   } else {
+  //     [current.downStartIndex, current.downEndIndex] = [start, end];
+  //   }
+  // }
   return text.slice(start, end);
 }
 

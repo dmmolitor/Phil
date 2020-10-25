@@ -13,9 +13,18 @@
   </div>
 
   <div id="toolbar">
-    <button id="new-grid" type="button" data-tooltip="New puzzle" onclick="createNewPuzzle()">
+    <button id="new-grid" type="button" data-tooltip="New puzzle" onmouseenter="showMenu(event)" onclick="createNewPuzzle()">
       <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
     </button>
+    <div id="new-grid-menu" class="menu hidden" onmouseleave="hideMenu(event)">
+        <h3>Desired grid size:</h3>
+        Rows: <input id="rows-input" type="number" name="rows" />
+        Columns: <input id="cols-input" type="number" name="cols" />
+        <h3>Warning! This will delete the current state of the crossword.</h3>
+        <button onclick="newPuzzleOfSize()">
+            New&nbsp;puzzle
+        </button>
+    </div>
     <button id="open-JSON" type="button" data-tooltip="Open puzzle..." onmouseenter="showMenu(event)" onclick="openPuzzle()">
       <i class="fa fa-folder-open-o fa-fw" aria-hidden="true"></i>
     </button>
