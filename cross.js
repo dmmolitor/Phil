@@ -323,10 +323,18 @@ function createNewPuzzle(rows, cols) {
   console.log("New puzzle created.")
 }
 
+function createNewPuzzleIfConfirmed(){
+    if (confirm("Warning: This will delete the current puzzle!")) {
+        createNewPuzzle()
+    }
+}
+
 function newPuzzleOfSize() {
   rows = parseInt(document.getElementById('rows-input').value)
   cols = parseInt(document.getElementById('cols-input').value)
-  createNewPuzzle(rows, cols)
+  if (confirm("Warning: This will delete the current puzzle!")) {
+      createNewPuzzle(rows, cols)
+  }
 }
 
 function mouseHandler(e) {

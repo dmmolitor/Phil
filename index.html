@@ -13,15 +13,15 @@
   </div>
 
   <div id="toolbar">
-    <button id="new-grid" type="button" data-tooltip="New puzzle" onmouseenter="showMenu(event)" onclick="createNewPuzzle()">
+    <button id="new-grid" type="button" data-tooltip="New puzzle" onmouseenter="showMenu(event)" onclick="createNewPuzzleIfConfirmed()">
       <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
     </button>
     <div id="new-grid-menu" class="menu hidden" onmouseleave="hideMenu(event)">
         <h3>Desired grid size:</h3>
         Rows: <input id="rows-input" type="number" name="rows" />
         Columns: <input id="cols-input" type="number" name="cols" />
-        <h3>Warning! This will delete the current state of the crossword.</h3>
-        <button onclick="newPuzzleOfSize()">
+        <!-- <h3>Warning! This will delete the current state of the crossword.</h3> -->
+        <button onclick="newPuzzleOfSize()" style="width:auto; border:solid">
             New&nbsp;puzzle
         </button>
     </div>
@@ -63,6 +63,9 @@
     <button id="toggle-symmetry" type="button" data-tooltip="Turn off symmetry" data-state="on" class="button-on" onclick="toggleSymmetry()">
       <i class="fa fa-balance-scale fa-fw" aria-hidden="true"></i>
     </button>
+    <!-- <button id="grid-size" type="button" data-tooltip="Grid size" onmouseenter="showMenu(event)">
+      <i class="fa fa-arrows-alt fa-fw" aria-hidden="true"></i>
+    </button> -->
 
     <div class="divider"></div>
 
